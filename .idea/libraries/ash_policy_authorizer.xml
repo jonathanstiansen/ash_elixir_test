@@ -1,0 +1,23 @@
+<component name="libraryTable">
+  <library name="ash_policy_authorizer" type="mix">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/ash_policy_authorizer/ebin" />
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/ash_policy_authorizer/ebin" />
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/ash_policy_authorizer/ebin" />
+      <root url="file://$PROJECT_DIR$/_build/test/lib/ash_policy_authorizer/ebin" />
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/ash_policy_authorizer/ebin" />
+      <root url="file://$PROJECT_DIR$/_build/test/lib/ash_policy_authorizer/ebin" />
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/ash_policy_authorizer/ebin" />
+      <root url="file://$PROJECT_DIR$/_build/test/lib/ash_policy_authorizer/ebin" />
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/ash_policy_authorizer/ebin" />
+      <root url="file://$PROJECT_DIR$/_build/test/lib/ash_policy_authorizer/ebin" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/deps/ash_policy_authorizer/lib" />
+      <root url="file://$PROJECT_DIR$/deps/ash_policy_authorizer/lib" />
+      <root url="file://$PROJECT_DIR$/deps/ash_policy_authorizer/lib" />
+      <root url="file://$PROJECT_DIR$/deps/ash_policy_authorizer/lib" />
+    </SOURCES>
+  </library>
+</component>
