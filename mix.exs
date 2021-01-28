@@ -42,7 +42,7 @@ defmodule AshTest.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:jason, "~> 1.0"},
       {:ash_postgres, "~> 0.32.1"},
-      {:ash_policy_authorizer, "~> 0.14.2"},
+      {:ash_policy_authorizer, "~> 0.14.3"},
      {:ash, "~> 1.32.0"},
     {:plug_cowboy, "~> 2.0"}
     ]

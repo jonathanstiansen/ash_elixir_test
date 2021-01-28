@@ -1,6 +1,7 @@
 defmodule AshTest.Player do
   use Ash.Resource, data_layer: AshPostgres.DataLayer,
     authorizers: [AshPolicyAuthorizer.Authorizer]
+  alias Ashtest.Checks
 
   postgres do
     table "players"
@@ -9,7 +10,11 @@ defmodule AshTest.Player do
 
   actions do
     create :default
-    read :default
+
+    read :me do
+      filter [id: actor(:id)]
+    end
+
     update :default
     destroy :default
   end
@@ -19,6 +24,8 @@ defmodule AshTest.Player do
   attributes do
     attribute :username, :string,
               allow_nil?: false
+
+    attribute :field, :string
 
     uuid_primary_key :id
   end
@@ -42,22 +49,30 @@ defmodule AshTest.Player do
       authorize_if always()
     end
 
+#    policy action_type(:update) do
+#      authorize_if relates_to_actor_via(:play)
+#    end
     # This will likely be a common occurrence. Specifically, policies that apply to all read actions
-    policy action_type(:read) do
-#      forbid_if not_logged_in()
+#    policy action_type(:read) do
+##      forbid_if not_logged_in()
+#
+#      # unless the actor is an active user, forbid their request
+#      #actor_attribute_equals(:active, true)
+#      # if the record is marked as public, authorize the request
+##      authorize_if attribute(:public, true)
+#      # if the actor is related to the data via that data's `owner` relationship, authorize the request
+#      authorize_if relates_to_actor_via(:owner)
+#    end
 
-      # unless the actor is an active user, forbid their request
-      forbid_unless actor_attribute_equals(:active, true)
-      # if the record is marked as public, authorize the request
-#      authorize_if attribute(:public, true)
-      # if the actor is related to the data via that data's `owner` relationship, authorize the request
-      authorize_if relates_to_actor_via(:owner)
+    policy action_type(:create) do
+       forbid_if always()
     end
 
-    policy action_type(:write) do
-       forbid_unless always()
+#    policy action_type(:update) do
+#      authorize_if attribute(:id, eq: actor(:id))
+#    end
+    policy action_type(:update) do
+      authorize_if {AshTest.Checks.ActorOwnsData, owner_field: :owner_id}
     end
   end
-
-
 end
